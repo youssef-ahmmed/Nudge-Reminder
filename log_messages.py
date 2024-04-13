@@ -19,3 +19,6 @@ MESSAGE_COLUMN_BIGGER = "Message column is bigger than CSV total columns"
 # CSV File Path
 CSV_NOT_EXIST = "CSV file it not loaded"
 
+# Sending Messages
+WAIT_FOR_OPEN = "Please wait, browser is opening"
+SCAN_QR_CODE = "Please scan your QR code before clicking on send message button"
