@@ -7,14 +7,13 @@ from controller.log_controller import LogController
 from controller.path_loader_controller import PathLoaderController
 from controller.start_end_rows_controller import StartEndRowsController
 from controller.table_display_controller import StartEndRowsTableDisplayController
-from controller.time_setting_controller import TimeSettingController
 from view.column_data_numbers import ColumnDataNumbers
 from view.log_widget import LogWidget
+from view.open_browser_button import OpenBrowserButton
 from view.path_loader import PathLoader
 from view.send_button import SendButton
 from view.start_end_rows import StartEndRows
 from view.start_end_rows_table_display import StartEndRowsTableDisplay
-from view.time_settings import TimeSetting
 
 
 class MainWindow(QWidget):
@@ -28,22 +27,22 @@ class MainWindow(QWidget):
         self.center_on_screen()
 
     def create_widgets(self):
-        self.time_setting = TimeSetting()
         self.start_end_rows = StartEndRows()
         self.path_loader = PathLoader()
         self.column_data_numbers = ColumnDataNumbers()
         self.start_end_rows_table_display = StartEndRowsTableDisplay()
+        self.open_browser_button = OpenBrowserButton()
         self.send_button = SendButton()
         self.log_widget = LogWidget()
 
     def init_ui(self):
         self.setLayout(QVBoxLayout())
 
-        self.layout().addWidget(self.time_setting)
         self.layout().addWidget(self.path_loader)
         self.layout().addWidget(self.start_end_rows)
         self.layout().addWidget(self.column_data_numbers)
         self.layout().addWidget(self.start_end_rows_table_display)
+        self.layout().addWidget(self.open_browser_button)
         self.layout().addWidget(self.send_button)
         self.layout().addWidget(self.log_widget)
 
@@ -51,7 +50,6 @@ class MainWindow(QWidget):
         self.show()
 
     def create_controller(self):
-        TimeSettingController.get_instance(self.time_setting)
         PathLoaderController.get_instance(self.path_loader)
         StartEndRowsController.get_instance(self.start_end_rows)
         ColumnDataNumbersController.get_instance(self.column_data_numbers)
