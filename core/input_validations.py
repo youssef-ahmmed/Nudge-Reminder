@@ -1,8 +1,21 @@
 import log_messages
 from controller.column_data_numbers_controller import ColumnDataNumbersController
+from controller.log_controller import LogController
 from controller.path_loader_controller import PathLoaderController
 from controller.start_end_rows_controller import StartEndRowsController
 from core.csv_parser import count_lines_and_columns_in_csv
+
+
+def validate_inputs() -> bool:
+    try:
+        InputValidations.validate_csv_file_exist()
+        InputValidations.validate_start_end_rows()
+        InputValidations.validate_column_numbers()
+
+        return True
+    except InputValidationError as e:
+        LogController.get_instance().log_error(str(e))
+        return False
 
 
 class InputValidationError(Exception):
